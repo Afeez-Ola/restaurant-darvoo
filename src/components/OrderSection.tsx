@@ -38,7 +38,7 @@ Menu Selection: ${formData.menu}
 Special Requests: ${formData.special}
     `.trim();
 
-    const whatsappUrl = `https://wa.me/1234567890?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/48517071489?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
