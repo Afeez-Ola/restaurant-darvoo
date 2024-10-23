@@ -5,6 +5,7 @@ interface OrderDetails {
   name: string;
   email: string;
   phone: string;
+  address: string;
   date: string;
   guests: string;
   menu: string;
@@ -16,6 +17,7 @@ export default function OrderForm() {
     name: '',
     email: '',
     phone: '',
+    address: '',
     date: '',
     guests: '',
     menu: 'standard',
@@ -47,13 +49,13 @@ Message: ${formData.message}
   };
 
   return (
-    <div id="order" className="bg-gray-50 py-16">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">Place Your Order</h2>
-        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div id="order" className="py-16 bg-gray-50">
+      <div className="container px-4 mx-auto">
+        <h2 className="mb-8 text-3xl font-bold text-center">Place Your Order</h2>
+        <form onSubmit={handleSubmit} className="max-w-2xl p-8 mx-auto bg-white rounded-lg shadow-lg">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+              <label className="block mb-2 text-sm font-medium text-gray-700">Name</label>
               <input
                 type="text"
                 name="name"
@@ -64,7 +66,7 @@ Message: ${formData.message}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+              <label className="block mb-2 text-sm font-medium text-gray-700">Email</label>
               <input
                 type="email"
                 name="email"
@@ -75,7 +77,18 @@ Message: ${formData.message}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+              <label className="block mb-2 text-sm font-medium text-gray-700">Address</label>
+              <input
+                type="text"
+                name="address"
+                required
+                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-orange-500"
+                value={formData.address}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <label className="block mb-2 text-sm font-medium text-gray-700">Phone</label>
               <input
                 type="tel"
                 name="phone"
@@ -86,7 +99,7 @@ Message: ${formData.message}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Event Date</label>
+              <label className="block mb-2 text-sm font-medium text-gray-700">Event Date</label>
               <input
                 type="date"
                 name="date"
@@ -97,7 +110,7 @@ Message: ${formData.message}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Number of Guests</label>
+              <label className="block mb-2 text-sm font-medium text-gray-700">Number of Guests</label>
               <input
                 type="number"
                 name="guests"
@@ -109,7 +122,7 @@ Message: ${formData.message}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Menu Package</label>
+              <label className="block mb-2 text-sm font-medium text-gray-700">Menu Package</label>
               <select
                 name="menu"
                 required
@@ -124,7 +137,7 @@ Message: ${formData.message}
             </div>
           </div>
           <div className="mt-6">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Special Requirements</label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">Special Requirements</label>
             <textarea
               name="message"
               rows={4}
@@ -135,7 +148,7 @@ Message: ${formData.message}
           </div>
           <button
             type="submit"
-            className="mt-6 w-full bg-orange-600 text-white px-6 py-3 rounded-lg flex items-center justify-center space-x-2 hover:bg-orange-700 transition-colors"
+            className="flex items-center justify-center w-full px-6 py-3 mt-6 space-x-2 text-white transition-colors bg-orange-600 rounded-lg hover:bg-orange-700"
           >
             <Send className="w-5 h-5" />
             <span>Send via WhatsApp</span>
